@@ -16,6 +16,7 @@ summary(titanic$Age)
 3*7*2
 4/2
 4/3
+
 ##Variables
 a <- 1
 a
