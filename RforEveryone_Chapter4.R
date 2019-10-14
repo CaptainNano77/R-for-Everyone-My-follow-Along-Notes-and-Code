@@ -221,3 +221,23 @@ a = c(1, NULL, 3)
 a
 
 #PIPES 4.8
+# PIPES: The pipe works by taking the object on the left-hand side and inserting it
+#  into the first argument of the function on the righ-hand side of the pipe. 
+library(magrittr)
+x <- 1:10
+x
+mean(x)
+x %>% mean
+
+# pipe example
+# Given a vector z that contains numbers and NAs, we want to find out how many NAs 
+# are present. Traditionally, this would be done by nesting functions. (Top example below).
+# However, this can also be done using pipes (bottom example below).
+
+z <- c(1, 2, NA, 8, 3, NA, 3)
+z
+sum(is.na(z))
+
+z %>% is.na %>% sum
+
+z %>% mean(na.rm=TRUE)
