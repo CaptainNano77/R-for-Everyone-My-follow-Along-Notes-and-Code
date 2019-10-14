@@ -96,3 +96,128 @@ class(k)
 2 != 1
 2 != 2
 
+#Vectors
+#Vectors cannot be mixed type. Must be same type. Create vector w/ 'c'
+v <- c(1,2,3,4,5)
+v
+
+#Performing an operation on a vector performs the operation on each element of 
+#the vector w/out the need for a loop on your part
+v*3
+
+v-3
+
+v/3
+
+v/v
+
+# a short cut to create the vector we just did, is to instead use :
+vv <- 1:5
+vv
+1:5
+
+#If 2 vectors are of THE SAME LENGTH, then they can perform operation on each other
+rm(v, vv)
+
+x <- c(2,4,6,8,10)
+y <- c(1,3,5,7,9)
+
+x+y
+x*y
+
+length(x)
+length(y)
+length(x+y)
+
+#If 2 vectors are of UNEQUAL LENGTH, the smaller is recycled in order until all elements
+#of the longer vector have been matched. If longer is not a multiple of smaller, a 
+#warning will be given.
+
+x <- c(1,2,3,4)
+y <- c(1,2)
+x+y
+x*y
+
+x <- c(1,2,3,4,5)
+x+y
+
+#You can compare vectors of the SAME LENGTH.
+x <- c(1,2,3,4,5)
+y <- c(6,7,8,9,10)
+x>y
+x<y
+
+x==5
+x!=5
+
+#Find individual elements of the vector with square brackets []
+x[2]
+y[2]
+#For a series of elements w/in the vector...
+x[1:2]
+y[1:2]
+#For non-consecutive elements in the vector...
+x[c(1,3)]
+y[c(1,3)]
+
+#Giving names to a vector can be done during or after creation
+#1)Provide a name for each element of an array ...
+c(One='a', Two='y', Last='r')
+
+#2)creat a vector
+w <- 1:3
+
+#3)name the elements in the vector 
+names(w) <- c('a', 'b', 'c')
+w
+
+# FACTOR Vectors 4.4.2
+# The levels of a factor are the unique values of that factor variable. 
+q = c('data', 'science', 'machine', 'learning', 'science', 'learning', 'learning', 'data',
+      'machine', 'data', 'science')
+q
+qFactor = as.factor(q)
+qFactor
+as.numeric(qFactor)
+
+#You can also set the ordering of the levels if needed. Such as education..
+factor(x=c('High School', 'Masters', 'Doctorate', 'College'), 
+       levels = c('High School', 'College', 'Masters', 'Doctorate'),
+       ordered = TRUE)
+
+# Calling Functions
+x <- c(1,2,3,3.5,4)
+x
+mean(x)
+
+#Any function in R has documentation. Place a question mark. 
+?'+'
+?'=='
+?'mean'
+
+# If we only know some of what we want, we can search part of it with 'apropos'
+apropos('mea')
+apropos('stand')
+
+# Missing Data 4.7
+#NA = missing data
+z <- c(1,2,NA, 8, 3, NA, 3)
+z
+is.na(z)
+
+#notice that if we take the mean of 'z' we will get the answer 'NA'. However, 
+# we can use 'na.rm=TRUE' to remove the NA and then calculate the mean.
+mean(z)
+mean(z, na.rm=TRUE)
+sum(z, na.rm=TRUE)
+sd(z, na.rm=TRUE)
+round(sd(z, na.rm=TRUE), 2)
+
+#NULL
+#NULL is the absence of anything. It isn't 'emptiness' it is 'nothingness'. 
+# THE DIFFERENCE IN 'NA' AND 'NULL' IS THAT 'NULL' CAN NOT EXIST WITHIN A VECTOR! 
+#It will simply disapear inside a vector...
+a = c(1, NULL, 3)
+a
+
+#PIPES 4.8
