@@ -123,9 +123,36 @@ diamonds
 #                                    EXTRACT DATA FROM WEB SITES: 6.7
 #######################################################################################################
 # 
-#
+# We can extract data from a website if it's in a neat HTML file. If it's not, then you might have
+# to parse the text of the page. 
+# We'll extract a table from a webpage on Jared Lander's website.
 
+library(rvest)
+ribalta <- read_html('http://www.jaredlander.com/data/ribalta.html')
+class(ribalta)
+ribalta
+ribalta %>% html_nodes('ul') %>% html_nodes('span')
+ribalta %>% html_nodes('.street')
+ribalta %>% html_nodes('.street') %>% html_text()
+ribalta %>% html_nodes('#longitude') %>% html_attr('value')
 
+ribalta %>% 
+  html_nodes('table.food-items') %>%
+  magrittr::extract2 (5) %>%
+  html_table()
 
+#######################################################################################################
+#                                    Reading JSON Data: 6.8
+#######################################################################################################
+# 
+# JSON = JavaScript Object Notation
+# data format stored in plain text that is well suited for nested data
+# Two main packages are 'rjson' and 'jsonlite'
 
-
+library(jsonlite)
+pizza <- fromJSON('http://www.jaredlander.com/data/PizzaFavorites.json')
+pizza
+class(pizza)
+class(pizza$Name)
+class(pizza$Details)
+class(pizza$Details[1])
