@@ -117,4 +117,58 @@ length(list5)
 
 #####################################################################################################
 #                           5.3: Matrices
+
+# Mathematical structure essential for statistics. 
+# Similar to a data.frame except every element of every column MUST be the same type,
+# most commonly, all numeric.
+
+#create a 5x2 matrix
+A <- matrix(1:10, nrow=5)
+A
+#create another 5x2 matrix
+B <- matrix(21:30, nrow=5)
+B
+#create another 5x2 matrix
+C <- matrix(41:50, nrow=5)
+C
+nrow(A)
+nrow(B)
+nrow(C)
+ncol(A)
+dim(A)
+
+# operate on matrices
+A+B
+A*B
+A==B
+
+# Transpose matrices of the same dimensions (multiply matrices)
+A %*% t(B)
+
+colnames(A)
+colnames(A) <- c('Left', 'Right')
+rownames(A) <- c('1st', '2nd', '3rd', '4th', '5th')
+
+colnames(B) <- c('Left', 'Right')
+rownames(B) <- c('1st', '2nd', '3rd', '4th', '5th')
+
+colnames(C) <- LETTERS[1:10]
+rownames(C) <- c('1st', '2nd', '3rd', '4th', '5th')
+ t(A)
+A %*% C 
+
+###############################################################################################
+#                               5.4: Arrays
 #
+#  An array is a multidimensional vector. Must all be of the same type. 
+# A Matrix is restricted to 2 dimensions
+# An Array is not restricted by dimensions
+
+
+Array <- array(1:12, dim=c(2,3,2))
+Array
+
+Array[1,,]
+Array[,,1]
+Array[2,2,2]
+Array[,1,2]
