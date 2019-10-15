@@ -72,4 +72,49 @@ model.matrix(~ Dummy - 1)
 ####################################################################################################
 #                          LISTS: 5.2
 
+# Lists can contain mixed types at the same time. They can contan numerics, characters, data.frames,
+# and other lists.
 
+# creates a 3-element list
+list(1,2,3)
+
+#creates a single element list
+list(c(1,2,3))
+
+# or create multiples...
+list3 <- list(c(1,2,3), 3:7)
+list3
+
+list(DataFrame, 1:10)
+
+list5 <- list(DataFrame, 1:10, list3)
+list5
+
+# We can name lists just like data.frames
+names(list5)
+names(list5) <- c('dataframe', 'vector', 'list')
+names(list5)
+list5
+
+# ELEMENTS in a list can also be named DURING creation using name-value pairs.
+list6 <- list(TheDataFrame=DataFrame, TheVector=1:10, TheList=list3)
+list6
+
+# To create an empty list, confusingly...you use a vector...
+(emptyList <- vector(mode='list', length=4))
+
+#Access individual elements of a list
+list5[[1]]
+list5[[1]]$Sport
+list5[[1]][,'Second', drop=FALSE]
+
+#Append an element to list
+length(list5)
+
+list5[4] <- 2
+list5
+length(list5)
+
+#####################################################################################################
+#                           5.3: Matrices
+#
